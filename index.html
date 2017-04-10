@@ -3,15 +3,93 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
 	<section id="countdownBody">
 		<div class="timer">
-			
+			<div class="days slot">
+				<div class="digits">
+					<h1></h1>
+				</div>
+				<div class="title">
+					<h2>Days</h2>
+				</div>
+			</div>
+			<div class="hours slot">
+				<div class="digits">
+					<h1></h1>
+				</div>
+				<div class="title">
+					<h2>Hours</h2>
+				</div>
+			</div>
+			<div class="minutes slot">
+				<div class="digits">
+					<h1></h1>
+				</div>
+				<div class="title">
+					<h2>Minutes</h2>
+				</div>
+			</div>
+			<div class="seconds slot">
+				<div class="digits">
+					<h1></h1>
+				</div>
+				<div class="title">
+					<h2>Seconds</h2>
+				</div>
+			</div>
 		</div>
 		<div class="heart">
 			
 		</div>
 	</section>
+
+	<script>
+		$(document).ready(function(){
+			var s =0;
+			var m =0;
+			var h =0;
+			var d =0;
+
+			startCount();
+
+			function startCount(){
+
+				timer = setInterval(count, 1000);
+			}			
+
+			function count(){		
+						
+
+				$('.seconds .digits h1').text(s);
+				$('.minutes .digits h1').text(m);
+				$('.hours .digits h1').text(h);
+				$('.days .digits h1').text(d);
+				if(s == 60 && m < 60){
+					s=-1;
+					m = m+1;					
+				}
+				if(m == 60 && h < 24){
+					s=-1;
+					m=0;
+					h=h+1;
+				}
+				if(h == 24){
+					s=-1;
+					m=0;
+					h=0;
+					d = d+1;
+				}
+
+				s++;			
+
+
+			}
+				
+		});
+	</script>
 </body>
 </html>
